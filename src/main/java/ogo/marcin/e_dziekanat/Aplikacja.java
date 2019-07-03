@@ -6,22 +6,15 @@ import org.hibernate.Transaction;
 
 public class Aplikacja {
     public static void main(String[] args) {
-        Session sessionPostgreSql = PostgreSqlConnector.getSessionFactory().getCurrentSession();
-        Session sessionMySql = MySqlConnector.getSessionFactory().getCurrentSession();
-
         Student student = new Student(11111L, "Test", "User", 1);
-
-        Transaction transactionMySql = sessionMySql.beginTransaction();
+        Session sessionPostgreSql = PostgreSqlConnector.getSessionFactory().getCurrentSession();
         Transaction transactionPostgreSql = sessionPostgreSql.beginTransaction();
-
-
-
-        sessionMySql.save(student);
         sessionPostgreSql.save(student);
-
-
-
-        transactionMySql.commit();
         transactionPostgreSql.commit();
+
+        Session sessionMySql = MySqlConnector.getSessionFactory().getCurrentSession();
+        Transaction transactionMySql = sessionMySql.beginTransaction();
+        sessionMySql.save(student);
+        transactionMySql.commit();
     }
 }
