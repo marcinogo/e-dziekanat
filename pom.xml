@@ -31,7 +31,7 @@
 
         <!--hibernate-->
         <version.hibernate>5.4.3.Final</version.hibernate>
-        <version.mysql>8.0.16</version.mysql>
+        <version.mysql>8.0.28</version.mysql>
         <version.postgresql>9.1-901-1.jdbc4</version.postgresql>
     </properties>
 
